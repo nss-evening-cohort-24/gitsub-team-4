@@ -126,17 +126,21 @@ const renderHeader = () => {
   let domString = "";
   domString += `
     <ul class="nav justify-content-center">
+    <i class="fa-solid fa-book-open" style="color: #E0218A;"></i>
     <li class="nav-item">
-      <a class="nav-link active" aria-current="page" href="/index.html">Overview</a>
+    <a class="nav-link active" aria-current="page" href="/index.html">Overview</a>
     </li>
+    <i class="fa-solid fa-cube" style="color: #E0218A;"></i>
     <li class="nav-item">
-      <a class="nav-link" href="/pages/packages.html">Packages</a>
+    <a class="nav-link" href="/pages/packages.html">Packages</a>
     </li>
+    <i class="fa-solid fa-chart-column" style="color: #E0218A;"></i>
     <li class="nav-item">
-      <a class="nav-link" href="/pages/projects.html">Projects</a>
+    <a class="nav-link" href="/pages/projects.html">Projects</a>
     </li>
+    <i class="fa-solid fa-book" style="color: #E0218A;"></i>
     <li class="nav-item">
-      <a class="nav-link" href="/pages/repos.html">Repos</a>
+    <a class="nav-link" href="/pages/repos.html">Repos</a>
     </li>
   </ul>`
   
@@ -156,10 +160,10 @@ const renderProfile = (array) => {
     <h5>${card.userName}</h5>
     <p class="card-text">${card.profBio}</p>
     <div class="info">
-      <p>${card.location}</p>
-      <p>${card.email}</p>
-      <p>${card.link}</p>
-      <p>${card.twitter}</p>
+    <i class="fa-solid fa-location-dot" style="color: #E0218A;"></i><p>${card.location}</p>
+    <i class="fa-solid fa-envelope" style="color: #E0218A;"></i><p>${card.email}</p>
+    <i class="fa-solid fa-link" style="color: #E0218A;"></i><p>${card.link}</p>
+    <i class="fa-brands fa-twitter" style="color: #E0218A;"></i><p>${card.twitter}</p>
     </div>
   </div>
 </div>
@@ -178,7 +182,7 @@ const renderFooter = () => {
   <li class="nav-item">
     <a class="nav-link" href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement">Privacy</a>
   </li>
-  <i class="fa-brands fa-github" style="color: #26537e;"></i>
+  <i class="fa-brands fa-github" style="color: #E0218A;"></i>
   <li class="nav-item">
     <a class="nav-link" href="https://github.com/security">Security</a>
   </li>
