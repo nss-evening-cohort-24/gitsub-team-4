@@ -9,14 +9,14 @@ const profile = [{
   twitter: "@barbie23",
   packages: [{
       packId: 1,
-      packName: "",
-      packDesc: "",
+      packName: "Something",
+      packDesc: "This is really great and useful",
       packTags: "",
       },
       {
       packId: 2,
-      packName: "",
-      packDesc: "",
+      packName: "This is another thing",
+      packDesc: "You will not believe this",
       packTags: "",
     },
     {
@@ -117,6 +117,7 @@ const profile = [{
 }];
 
 
+
 const renderToDom = (divId, htmlOnDom) => {
   const targetDiv = document.querySelector(divId);
   targetDiv.innerHTML = htmlOnDom;
@@ -195,9 +196,52 @@ const renderFooter = () => {
 };
 
 
+
+const renderCardPkg = (array) => {
+  let pkgString = "";
+
+  for (const pack of array) {
+    pkgString += `
+      <div class="col-md-2 mb-3"> 
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">${pack.packName}</h5>
+            <p class="card-text">${pack.packDesc}</p>
+            <a href="#" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+  renderToDom("#main-container-pkg", pkgString);
+};
+
+const renderPkgForm = (array) => {
+  let pkgFormString = "";
+
+  for (const form of array) {
+    pkgFormString += `
+    <div class="mb-3">
+      <label for="${form.packName}" class="form-label">Name</label>
+      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Name">
+    </div>
+    <div class="mb-3">
+      <label for="${form.packDesc}" class="form-label">Description</label>
+      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    </div>
+    `
+    renderToDom("#form-container-pkg", pkgFormString);
+  };
+};
+
+
+
+
 const startApp = () => {
   renderHeader();
   renderProfile(profile);
+  renderCardPkg(profile[0].packages);
+  renderPkgForm([profile[0].packages[0]]);
   renderFooter();
 }
 startApp();

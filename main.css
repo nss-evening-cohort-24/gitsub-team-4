@@ -13,3 +13,19 @@ h1 {
 .nav-link {
   color: #E0218A;
 }
+
+.card-title {
+  color: #E0218A;
+}
+#pkg-page-container {
+  display: flex;
+}
+#form-container-pkg {
+  align-self: flex-end;
+}
+#containers {
+  flex-direction: column;
+}
+.form-label {
+  color: #E0218A;
+}
