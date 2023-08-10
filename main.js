@@ -5,7 +5,7 @@ const profile = [{
   profBio: "Living in a Barbie world",
   location: "Barbieland, CA",
   email: "barbie_23@aol.com",
-  link: "https://www.about.mattel.com",
+  link: "https://about.mattel.com",
   twitter: "@barbie23",
   packages: [{
       packId: 1,
@@ -88,31 +88,31 @@ const profile = [{
     }],
   repos: [{
       repoId: 1,
-      repoName: "",
-      repoDesc: "",
-      repoTags: "",
-      repoStar: ""
+      repoName: "build-a-dreamhouse",
+      repoDesc: "An interactive web game where the user is able to build their very own dream house or mojo dojo casa house.",
+      repoTags: "netlify jamstack react",
+      repoStar: true
     },
     {
       repoId: 2,
-      repoName: "",
-      repoDesc: "",
-      repoTags: "",
-      repoStar: ""
+      repoName: "i-am-kenough",
+      repoDesc: "A random quote generator meant to provide a moment of inspiration to get your day started off right.",
+      repoTags: "react",
+      repoStar: false
     },
     {
       repoId: 3,
-      repoName: "",
-      repoDesc: "",
-      repoTags: "",
-      repoStar: ""
+      repoName: "which-barbie-are-you",
+      repoDesc: "Ever wondered which barbie you are? Now's your chance! With this online quiz, learn which Barbie (or Ken) you are.",
+      repoTags: "javascript html css",
+      repoStar: true
     },
     {
       repoId: 4,
-      repoName: "",
-      repoDesc: "",
-      repoTags: "",
-      repoStar: ""
+      repoName: "htthorsey",
+      repoDesc: "HTTHORSEY - HTTP Status Codes as Portrayed by Horses",
+      repoTags: "http status-codes gifs horses",
+      repoStar: true
     }]
 }];
 
@@ -195,9 +195,26 @@ const renderFooter = () => {
 };
 
 
+const renderRepos = (array) => {
+  let repoString = "";
+  
+  for (const card of array) {
+    repoString += `<div class="card mb-3">
+    <div class="card-body">
+      <h5 class="card-title">${card.repoName}</h5>
+      <p class="card-text">${card.repoDesc}</p>
+      <p class="card-text"><small class="text-body-secondary">${card.repoTags}</small></p>
+      <button type="button" class="btn btn-outline-light">Star</button>
+    </div>
+  </div>`
+  }
+  renderToDom("#main-container-repo", repoString)
+}
+
 const startApp = () => {
   renderHeader();
   renderProfile(profile);
   renderFooter();
+  renderRepos(profile[0].repos);
 }
 startApp();
