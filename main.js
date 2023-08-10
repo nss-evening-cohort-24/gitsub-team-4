@@ -208,7 +208,7 @@ const renderRepos = (array) => {
     </div>
   </div>`
   }
-  renderToDom("#main-container-repo", repoString)
+  renderToDom("#repo-card-container", repoString)
 }
 
 const startApp = () => {
