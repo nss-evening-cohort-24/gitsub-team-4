@@ -1,4 +1,6 @@
-const profile = [{
+//turned profile into an object.  
+
+const profile = {
   name: "Barbie Midge",
   userName: "barbie23",
   userImg: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0WJIg65PcoLHqLwk-_78Bf9baGT_0ox3FKfRKhYnH6I7M_HZhGqzx-ES388PYF6qpIo4&usqp=CAU",
@@ -11,110 +13,110 @@ const profile = [{
       packId: 1,
       packName: "Something",
       packDesc: "This is really great and useful",
-      packTags: "",
+      packTags: ["tag1", "tag2", "tag3"],
       },
       {
       packId: 2,
       packName: "This is another thing",
       packDesc: "You will not believe this",
-      packTags: "",
+      packTags: ["tag1", "tag2", "tag3"],
     },
     {
       packId: 3,
       packName: "",
       packDesc: "",
-      packTags: "",
+      packTags: ["tag1", "tag2", "tag3"],
     },
     {
       packId: 4,
       packName: "",
       packDesc: "",
-      packTags: "",
+      packTags: ["tag1", "tag2", "tag3"],
     },
     {
       packId: 5,
       packName: "",
       packDesc: "",
-      packTags: "",
+      packTags: ["tag1", "tag2", "tag3"],
     },
     {
       packId: 6,
       packName: "",
       packDesc: "",
-      packTags: "",
+      packTags: ["tag1", "tag2", "tag3"],
     }],
   projects: [
     {
       projId: 1,
       projName: "",
       projDesc: "",
-      projTags: "",
+      projTags: ["tag1", "tag2", "tag3"],
       projStar: false 
     },
     {
       projId: 2,
       projName: "",
       projDesc: "",
-      projTags: "",
+      projTags: ["tag1", "tag2", "tag3"],
       projStar: false 
     },
     {
       projId: 3,
       projName: "",
       projDesc: "",
-      projTags: "",
+      projTags: ["tag1", "tag2", "tag3"],
       projStar: false 
     },
     {
       projId: 4,
       projName: "",
       projDesc: "",
-      projTags: "",
+      projTags: ["tag1", "tag2", "tag3"],
       projStar: false 
     },
     {
       projId: 5,
       projName: "",
       projDesc: "",
-      projTags: "",
+      projTags: ["tag1", "tag2", "tag3"],
       projStar: false 
     },
     {
       projId: 6,
       projName: "",
       projDesc: "",
-      projTags: "",
+      projTags: ["tag1", "tag2", "tag3"],
       projStar: false 
     }],
   repos: [{
       repoId: 1,
       repoName: "build-a-dreamhouse",
       repoDesc: "An interactive web game where the user is able to build their very own dream house or mojo dojo casa house.",
-      repoTags: "netlify jamstack react",
+      repoTags: ["netlify", "jamstack", "react"],
       repoStar: true
     },
     {
       repoId: 2,
       repoName: "i-am-kenough",
       repoDesc: "A random quote generator meant to provide a moment of inspiration to get your day started off right.",
-      repoTags: "react",
+      repoTags: ["react"],
       repoStar: false
     },
     {
       repoId: 3,
       repoName: "which-barbie-are-you",
       repoDesc: "Ever wondered which barbie you are? Now's your chance! With this online quiz, learn which Barbie (or Ken) you are.",
-      repoTags: "javascript html css",
+      repoTags: ["javascript", "html", "css"],
       repoStar: true
     },
     {
       repoId: 4,
       repoName: "htthorsey",
       repoDesc: "HTTHORSEY - HTTP Status Codes as Portrayed by Horses",
-      repoTags: "http status-codes gifs horses",
+      repoTags: ["http status-codes", "gifs", "horses"],
       repoStar: true
     }]
-}];
+};
 
 
 
@@ -148,28 +150,24 @@ const renderHeader = () => {
   renderToDom("#top-nav", domString);
 };
 
-
-const renderProfile = (array) => {
+const renderProfile = (profile) => {
   let domString = "";
-
-  for (const card of array) {
   domString += `
   <div class="card" style="width: 18rem;">
-  <img src="${card.userImg}" class="card-img-top rounded-circle" alt="...">
+  <img src="${profile.userImg}" class="card-img-top rounded-circle" alt="...">
   <div class="card-body">
-    <h3>${card.name}</h3>
-    <h5>${card.userName}</h5>
-    <p class="card-text">${card.profBio}</p>
+    <h3>${profile.name}</h3>
+    <h5>${profile.userName}</h5>
+    <p class="card-text">${profile.profBio}</p>
     <div class="info">
-    <i class="fa-solid fa-location-dot" style="color: #E0218A;"></i><p>${card.location}</p>
-    <i class="fa-solid fa-envelope" style="color: #E0218A;"></i><p>${card.email}</p>
-    <i class="fa-solid fa-link" style="color: #E0218A;"></i><p>${card.link}</p>
-    <i class="fa-brands fa-twitter" style="color: #E0218A;"></i><p>${card.twitter}</p>
+    <i class="fa-solid fa-location-dot" style="color: #E0218A;"></i><p>${profile.location}</p>
+    <i class="fa-solid fa-envelope" style="color: #E0218A;"></i><p>${profile.email}</p>
+    <i class="fa-solid fa-link" style="color: #E0218A;"></i><p>${profile.link}</p>
+    <i class="fa-brands fa-twitter" style="color: #E0218A;"></i><p>${profile.twitter}</p>
     </div>
   </div>
 </div>
   `
-  }
   renderToDom("#prof-card", domString);
 };
 
@@ -195,31 +193,21 @@ const renderFooter = () => {
   renderToDom("#footer", domString);
 };
 
-
-
-
-
-const renderPkgForm = (array) => {
+const renderPkgForm = () => {
   let pkgFormString = "";
 
-  for (const form of array) {
     pkgFormString += `
     <div class="mb-3">
-      <label for="${form.packName}" class="form-label">Name</label>
+      <label for="Name" class="form-label">Name</label>
       <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Name">
     </div>
     <div class="mb-3">
-      <label for="${form.packDesc}" class="form-label">Description</label>
+      <label for="Description" class="form-label">Description</label>
       <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
     </div>
     `
     renderToDom("#form-container-pkg", pkgFormString);
-  };
 };
-
-
-
-
 
 const renderCardPkg = (array) => {
   let pkgString = "";
@@ -256,14 +244,12 @@ const renderRepos = (array) => {
   renderToDom("#main-container-repo", repoString)
 }
 
-
-
 const startApp = () => {
   renderHeader();
   renderProfile(profile);
-  renderCardPkg(profile[0].packages);
-  renderPkgForm([profile[0].packages[0]]);
+  renderCardPkg(profile.packages);
+  renderPkgForm();
   renderFooter();
-  renderRepos(profile[0].repos);
+  renderRepos(profile.repos);
 }
 startApp();
