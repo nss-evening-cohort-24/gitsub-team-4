@@ -44,3 +44,13 @@ h1 {
 .form-label {
   color: #E0218A;
 }
+#main-container-pkg{
+  display: flex;
+  flex-direction: row;
+}
+.btn-primary {
+  background-color: #E0218A;
+}
+.btn-primary:hover{
+  background-color: gray;
+}

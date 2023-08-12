@@ -11,38 +11,38 @@ const profile = {
   twitter: "@barbie23",
   packages: [{
       packId: 1,
-      packName: "Something",
-      packDesc: "This is really great and useful",
+      packName: "Docker",
+      packDesc: "A software platform used for building applications based on containers - small and lightweight execution environments",
       packTags: ["tag1", "tag2", "tag3"],
       },
       {
       packId: 2,
-      packName: "This is another thing",
-      packDesc: "You will not believe this",
+      packName: "Apache Maven",
+      packDesc: "A default package manager used for the Java programming language and the java runtime environment.",
       packTags: ["tag1", "tag2", "tag3"],
     },
     {
       packId: 3,
-      packName: "",
-      packDesc: "",
+      packName: "NuGet",
+      packDesc: "A free and open source package manager used for the Microsoft development platforms including .NET.",
       packTags: ["tag1", "tag2", "tag3"],
     },
     {
       packId: 4,
-      packName: "",
-      packDesc: "",
+      packName: "RubyGems",
+      packDesc: "A standard format for distributing Ruby programs and libraries used for the Ruby programming language.",
       packTags: ["tag1", "tag2", "tag3"],
     },
     {
       packId: 5,
-      packName: "",
-      packDesc: "",
+      packName: "npm",
+      packDesc: "A package manager for Javascript, included with Node.js npm makes it easy for deveipers to share and reuse code.",
       packTags: ["tag1", "tag2", "tag3"],
     },
     {
       packId: 6,
-      packName: "",
-      packDesc: "",
+      packName: "Containers",
+      packDesc: "A single place for your team to manage Docker images and decide who can see and access your images.",
       packTags: ["tag1", "tag2", "tag3"],
     }],
   projects: [
@@ -197,16 +197,46 @@ const renderPkgForm = () => {
   let pkgFormString = "";
 
     pkgFormString += `
-    <div class="mb-3">
-      <label for="Name" class="form-label">Name</label>
-      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Name">
-    </div>
-    <div class="mb-3">
-      <label for="Description" class="form-label">Description</label>
-      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-    </div>
+    <form id="barb-form">
+      <div class="mb-3">
+        <label for="name" class="form-label">Project board name</label>
+        <input type="text" class="form-control" id="name" placeholder="Name">
+      </div>
+      <div class="mb-3">
+        <label for="Description" class="form-label">Description</label>
+        <textarea class="form-control" id="desc" rows="3"></textarea>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </form>
     `
-    renderToDom("#form-container-pkg", pkgFormString);
+    const formContainer = document.querySelector("#form-container-pkg");
+    formContainer.innerHTML = pkgFormString; 
+    document.querySelector("#barb-form").addEventListener("submit", createCard);
+};
+
+const createCard = (e) => {
+  e.preventDefault();
+  
+
+  const nameInput = document.querySelector("#name");
+  const descInput = document.querySelector("#desc")
+
+  if (nameInput.value.trim() === "" || descInput.value.trim() === "") {
+    alert("Please fill out all fields before hitting submit");
+    return; 
+  }
+  
+
+  const cardObj = {
+    packName: nameInput.value,
+    packDesc: descInput.value,
+  };
+
+  profile.packages.push(cardObj); 
+  renderCardPkg(profile.packages);
+
+  nameInput.value = "";
+  descInput.value = "";
 };
 
 const renderCardPkg = (array) => {
@@ -242,7 +272,7 @@ const renderRepos = (array) => {
   </div>`
   }
   renderToDom("#main-container-repo", repoString)
-}
+};
 
 const startApp = () => {
   renderHeader();
