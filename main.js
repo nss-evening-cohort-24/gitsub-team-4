@@ -411,15 +411,14 @@ const renderCardPkg = (array) => {
 
   for (const pack of array) {
     pkgString += `
-      <div class="col-md-2 mb-3"> 
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">${pack.packName}</h5>
-            <p class="card-text">${pack.packDesc}</p>
-            <a href="#" class="btn btn-primary">Learn More</a>
-          </div>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">${pack.packName}</h5>
+          <p class="card-text">${pack.packDesc}</p>
+          <a href="#" class="btn btn-primary">Learn More</a>
         </div>
       </div>
+        
     `;
   }
   renderToDom("#main-container-pkg", pkgString);
