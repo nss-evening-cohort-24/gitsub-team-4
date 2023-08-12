@@ -453,7 +453,6 @@ const getData = () => {
           projEventListeners();
           break;
       case "repoBody":
-        renderRepos(profile.repos);
           renderRepos(profile.repos);
           break;
   }

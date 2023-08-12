@@ -109,11 +109,6 @@ h1 {
   background-color:#FDC5EE;
   color: black;
 }
-#main-container-pkg .card {
-  border-style: solid;
-  border-width: thin;
-  border-color: #E0218A;
-}
 #form-container{
   width:100%;
   display: grid;
