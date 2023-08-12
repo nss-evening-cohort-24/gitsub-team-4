@@ -8,6 +8,9 @@ h1 {
 .card {
   background-color: black;
   color: white;
+  border-style: solid;
+  border-color: #E0218A;
+  border-width: 1px;
 }
 
 .nav-link {
@@ -32,21 +35,9 @@ h1 {
 .card-title {
   color: #E0218A;
 }
-#pkg-page-container {
-  display: flex;
-}
-#form-container-pkg {
-  align-self: flex-end;
-}
-#containers {
-  flex-direction: column;
-}
+
 .form-label {
   color: #E0218A;
-}
-#main-container-pkg{
-  display: flex;
-  flex-direction: row;
 }
 .btn-primary {
   background-color: #E0218A;
