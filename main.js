@@ -12,58 +12,58 @@ const profile = {
       packId: 1,
       packName: "Docker",
       packDesc: "A software platform used for building applications based on containers - small and lightweight execution environments",
-      packTags: ["tag1", "tag2", "tag3"],
+      packTags: ["tag1", "tag2", "tag3"]
       },
       {
       packId: 2,
       packName: "Apache Maven",
       packDesc: "A default package manager used for the Java programming language and the java runtime environment.",
-      packTags: ["tag1", "tag2", "tag3"],
+      packTags: ["tag1", "tag2", "tag3"]
     },
     {
       packId: 3,
       packName: "NuGet",
       packDesc: "A free and open source package manager used for the Microsoft development platforms including .NET.",
-      packTags: ["tag1", "tag2", "tag3"],
+      packTags: ["tag1", "tag2", "tag3"]
     },
     {
       packId: 4,
       packName: "RubyGems",
       packDesc: "A standard format for distributing Ruby programs and libraries used for the Ruby programming language.",
-      packTags: ["tag1", "tag2", "tag3"],
+      packTags: ["tag1", "tag2", "tag3"]
     },
     {
       packId: 5,
       packName: "npm",
       packDesc: "A package manager for Javascript, included with Node.js npm makes it easy for deveipers to share and reuse code.",
-      packTags: ["tag1", "tag2", "tag3"],
+      packTags: ["tag1", "tag2", "tag3"]
     },
     {
       packId: 6,
       packName: "Containers",
       packDesc: "A single place for your team to manage Docker images and decide who can see and access your images.",
-      packTags: ["tag1", "tag2", "tag3"],
+      packTags: ["tag1", "tag2", "tag3"]
     }],
   projects: [
     {
       projId: 1,
-      projName: "",
-      projDesc: "",
-      projTags: ["tag1", "tag2", "tag3"],
+      projName: "The Ken Cloner",
+      projDesc: "Ken fabulas Malibu totally hair Barbie imagination",
+      projTags: "ken, cloning",
       projStar: false 
     },
     {
       projId: 2,
-      projName: "",
-      projDesc: "",
-      projTags: ["tag1", "tag2", "tag3"],
+      projName: "Glitter Counter",
+      projDesc: "Barbie Jeep totally whatever elit brush",
+      projTags: "glitter, .Math",
       projStar: false 
     },
     {
       projId: 3,
-      projName: "",
-      projDesc: "",
-      projTags: ["tag1", "tag2", "tag3"],
+      projName: "Everything Pink Generator",
+      projDesc: "Tutti Skipper Paris vis girl denique",
+      projTags: "pink",
       projStar: false 
     },
     {
@@ -117,8 +117,6 @@ const profile = {
     }]
 };
 
-
-
 const renderToDom = (divId, htmlOnDom) => {
   const targetDiv = document.querySelector(divId);
   targetDiv.innerHTML = htmlOnDom;
@@ -149,8 +147,6 @@ const renderHeader = () => {
   renderToDom("#top-nav", domString);
 };
 
-const renderProfile = (profile) => {
-
 const renderProfile = (array) => {
   let domString = "";
   domString += `
@@ -161,10 +157,18 @@ const renderProfile = (array) => {
     <h5>${profile.userName}</h5>
     <p class="card-text">${profile.profBio}</p>
     <div class="info">
-    <i class="fa-solid fa-location-dot" style="color: #E0218A;"></i><p>${profile.location}</p>
-    <i class="fa-solid fa-envelope" style="color: #E0218A;"></i><p>${profile.email}</p>
-    <i class="fa-solid fa-link" style="color: #E0218A;"></i><p>${profile.link}</p>
-    <i class="fa-brands fa-twitter" style="color: #E0218A;"></i><p>${profile.twitter}</p>
+    <div class="location">
+        <i class="fa-solid fa-location-dot" style="color: #E0218A;"></i><p>${profile.location}</p>
+      </div>
+      <div class="email">
+        <i class="fa-solid fa-envelope" style="color: #E0218A;"></i><p>${profile.email}</p>
+      </div>
+      <div class="web">
+        <i class="fa-solid fa-link" style="color: #E0218A;"></i><p>${profile.link}</p>
+      </div>
+      <div class="twitter">
+        <i class="fa-brands fa-twitter" style="color: #E0218A;"></i><p>${profile.twitter}</p>
+      </div>
     </div>
   </div>
 </div>
@@ -239,18 +243,18 @@ const newProj = (e) => {
     e.preventDefault();
 
   const projObj = {
-    projId: profile[0].projects.length + 1,
+    projId: profile.projects.length + 1,
     projName: document.querySelector("#name").value,
     projDesc: document.querySelector("#description").value,
     projTags: document.querySelector("#tag").value,
     projStar: document.querySelector("#favorite").checked
   }
 
-  profile[0].projects.push(projObj);
-  console.log (profile[0].projects)
+  profile.projects.push(projObj);
+  console.log (profile.projects)
   
   if (document.body.id === "projBody") {
-  renderTable(profile[0].projects);
+  renderTable(profile.projects);
   form.reset 
   }
 };
@@ -370,9 +374,12 @@ const getData = () => {
       case "main":
           break;
       case "packBody":
+          renderCardPkg(profile.packages);
+          renderPkgForm();
+          renderRepos(profile.repos);
           break;
       case "projBody":
-          renderTable(profile[0].projects);
+          renderTable(profile.projects);
           renderProjForm();
           projEventListeners();
           break;
@@ -384,10 +391,8 @@ const getData = () => {
 const startApp = () => {
   renderHeader();
   renderProfile(profile);
-  renderCardPkg(profile.packages);
   getData();
-  renderPkgForm();
   renderFooter();
-  renderRepos(profile.repos);
+  
 }
 startApp();
