@@ -8,8 +8,128 @@ h1 {
 .card {
   background-color: black;
   color: white;
+  border: 1.5px solid #E0218A;
+}
+
+.card-body {
+  font-family: Arial, Helvetica, sans-serif;
+  align-items: baseline;
+  
+}
+
+.info {
+  font-family: Arial, Helvetica, sans-serif;
+  margin-top: 50px;
+  font-size: 14px;
+}
+
+.location {
+  display: inline-flex;
+  align-items: baseline;
+}
+
+.email {
+  display: inline-flex;
+  align-items: baseline;
+}
+
+.web {
+  display: inline-flex;
+  align-items: baseline;
+}
+
+.twitter {
+  display: inline-flex;
+  align-items: baseline;
+}
+
+.info p {
+  margin-left: 15px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.card-img-top {
+  width: 230px; 
+  margin: auto;
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
+
+.card-body > p {
+  font-style: italic;
+  margin-top: 20px;
+}
+
+.card-body > h5 {
+  font-size: 18px;
+  font-weight: bold;
+  opacity: 0.3;
 }
 
 .nav-link {
   color: #E0218A;
+}
+
+.nav {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  margin-top: 20px;
+  display: flex;
+  align-items: baseline;
+}
+
+li {
+  margin-right: 50px;
+}
+
+
+
+#projSubmit {
+  background-color: #E0218A;
+}
+
+#proj-page-containter {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 50px;
+}
+
+#form-container-proj {
+  align-self: flex-end;
+  border: 1.5px solid #E0218A;
+  padding: 20px;
+  height: 295px;
+  overflow-y: scroll;
+}
+
+#containers {
+  flex-direction: column;
+}
+
+#main-container-proj {
+  height: 295px;
+  overflow-y: scroll;
+  display: block;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  margin-bottom: 15px; 
+  border: 1.5px solid #E0218A;
+  padding: 20px;
+
+}
+
+label {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  color: white;
+}
+
+.form-control {
+  height: 25px;
+  background-color: #3B3535;
+  color: white;
+}
+
+.form-check-input {
+  background-color: #3B3535;
 }

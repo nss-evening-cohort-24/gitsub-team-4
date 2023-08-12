@@ -11,58 +11,58 @@ const profile = [{
       packId: 1,
       packName: "",
       packDesc: "",
-      packTags: "",
+      packTags: ""
       },
       {
       packId: 2,
       packName: "",
       packDesc: "",
-      packTags: "",
+      packTags: ""
     },
     {
       packId: 3,
       packName: "",
       packDesc: "",
-      packTags: "",
+      packTags: ""
     },
     {
       packId: 4,
       packName: "",
       packDesc: "",
-      packTags: "",
+      packTags: ""
     },
     {
       packId: 5,
       packName: "",
       packDesc: "",
-      packTags: "",
+      packTags: ""
     },
     {
       packId: 6,
       packName: "",
       packDesc: "",
-      packTags: "",
+      packTags: ""
     }],
   projects: [
     {
       projId: 1,
-      projName: "",
-      projDesc: "",
-      projTags: "",
+      projName: "The Ken Cloner",
+      projDesc: "Ken fabulas Malibu totally hair Barbie imagination",
+      projTags: "ken, cloning",
       projStar: false 
     },
     {
       projId: 2,
-      projName: "",
-      projDesc: "",
-      projTags: "",
+      projName: "Glitter Counter",
+      projDesc: "Barbie Jeep totally whatever elit brush",
+      projTags: "glitter, .Math",
       projStar: false 
     },
     {
       projId: 3,
-      projName: "",
-      projDesc: "",
-      projTags: "",
+      projName: "Everything Pink Generator",
+      projDesc: "Tutti Skipper Paris vis girl denique",
+      projTags: "pink",
       projStar: false 
     },
     {
@@ -116,7 +116,6 @@ const profile = [{
     }]
 }];
 
-
 const renderToDom = (divId, htmlOnDom) => {
   const targetDiv = document.querySelector(divId);
   targetDiv.innerHTML = htmlOnDom;
@@ -147,7 +146,6 @@ const renderHeader = () => {
   renderToDom("#top-nav", domString);
 };
 
-
 const renderProfile = (array) => {
   let domString = "";
 
@@ -160,16 +158,107 @@ const renderProfile = (array) => {
     <h5>${card.userName}</h5>
     <p class="card-text">${card.profBio}</p>
     <div class="info">
-    <i class="fa-solid fa-location-dot" style="color: #E0218A;"></i><p>${card.location}</p>
-    <i class="fa-solid fa-envelope" style="color: #E0218A;"></i><p>${card.email}</p>
-    <i class="fa-solid fa-link" style="color: #E0218A;"></i><p>${card.link}</p>
-    <i class="fa-brands fa-twitter" style="color: #E0218A;"></i><p>${card.twitter}</p>
+      <div class="location">
+        <i class="fa-solid fa-location-dot" style="color: #E0218A;"></i><p>${card.location}</p>
+      </div>
+      <div class="email">
+        <i class="fa-solid fa-envelope" style="color: #E0218A;"></i><p>${card.email}</p>
+      </div>
+      <div class="web">
+        <i class="fa-solid fa-link" style="color: #E0218A;"></i><p>${card.link}</p>
+      </div>
+      <div class="twitter">
+        <i class="fa-brands fa-twitter" style="color: #E0218A;"></i><p>${card.twitter}</p>
+      </div>
     </div>
   </div>
 </div>
   `
   }
   renderToDom("#prof-card", domString);
+};
+
+const tableRows = (array) => {
+  let domString = "";  
+  for (const key of array) {
+    domString += `
+    <tr>
+      <th scope="row">${key.projName}</th>
+      <td>${key.projDesc}</td>
+      <td>${key.projTags}</td>
+      <td>${key.projStar}</td>
+    </tr>`
+    };
+  return domString;
+};
+
+const renderTable = (array) => {
+  let domString = "";
+  domString += `
+    <table class="table table-dark table-striped" id="tRow">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Description</th>
+          <th scope="col">Tag</th>
+          <th scope="col">Favorite</th>
+         </tr>
+      </thead>
+      <tbody>
+       ${tableRows(array)}
+      </tbody>
+     </table>
+  `
+  if (document.body.id === "projBody") {
+  renderToDom("#main-container-proj", domString);
+  }
+};
+
+const renderProjForm = () => {
+  let domString = "";
+  domString += `
+      <form>
+      <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" id="name" aria-describedby="emailHelp">
+      </div>
+      <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <input type="text" class="form-control" id="description" aria-describedby="emailHelp">
+      </div>
+      <div class="mb-3">
+        <label for="tag" class="form-label">Tags</label>
+        <input type="text" class="form-control" id="tag" aria-describedby="emailHelp">
+      </div>
+      <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="favorite">
+        <label class="form-check-label" for="favorite">Favorite</label>
+      </div>
+      <button type="submit" class="btn btn-primary" data-href="./projects.html" id="projSubmit">Submit</button>
+      </form>
+  `
+ 
+  renderToDom("#form-container-proj", domString);
+};
+
+const newProj = (e) => { 
+    e.preventDefault();
+
+  const projObj = {
+    projId: profile[0].projects.length + 1,
+    projName: document.querySelector("#name").value,
+    projDesc: document.querySelector("#description").value,
+    projTags: document.querySelector("#tag").value,
+    projStar: document.querySelector("#favorite").checked
+  }
+
+  profile[0].projects.push(projObj);
+  console.log (profile[0].projects)
+  
+  if (document.body.id === "projBody") {
+  renderTable(profile[0].projects);
+  form.reset 
+  }
 };
 
 const renderFooter = () => {
@@ -194,10 +283,35 @@ const renderFooter = () => {
   renderToDom("#footer", domString);
 };
 
+const projEventListeners = () => {
+    if (document.body.id === "projBody") {
+     const projectForm = document.querySelector("#form-container-proj")
+     projectForm.addEventListener("submit", newProj);
+    }
+};
+  
+const getData = () => {
+  const page = document.body.id;
+  switch (page) {
+      case "main":
+          break;
+      case "packBody":
+          break;
+      case "projBody":
+          renderTable(profile[0].projects);
+          renderProjForm();
+          projEventListeners();
+          break;
+      case "repoBody":
+          break;
+  }
+};
 
 const startApp = () => {
   renderHeader();
   renderProfile(profile);
-  renderFooter();
-}
+  getData();
+  renderFooter()
+};
+
 startApp();
