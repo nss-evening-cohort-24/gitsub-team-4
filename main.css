@@ -73,20 +73,27 @@ h1 {
 #repos-page-container {
   display: flex;
   flex-direction: row;
+  padding-top: 25px;
   margin-left: auto;
   margin-right: auto;
   gap: 20px;
 }
-#main-conatainer-repo {
+
+#containers-repos {
   display: flex;
   flex-direction: column;
+  gap: 20px;
 }
-.card-title {
-  color:#E0218A;
+
+#repoBody {
+ width: 100%;
+ margin-left: auto;
+ margin-right: auto;
+ padding: 25px;
 }
 
 .card-title {
-  color: #E0218A;
+  color:#E0218A;
 }
 
 .form-label {
@@ -138,8 +145,6 @@ h1 {
 li {
   margin-right: 50px;
 }
-
-
 
 #projSubmit {
   background-color: #E0218A;
