@@ -117,6 +117,8 @@ const profile = {
     }]
 };
 
+// ****** Functions to Render Common Elements Between Pages ******
+
 const renderToDom = (divId, htmlOnDom) => {
   const targetDiv = document.querySelector(divId);
   targetDiv.innerHTML = htmlOnDom;
@@ -176,6 +178,29 @@ const renderProfile = (array) => {
   renderToDom("#prof-card", domString);
 };
 
+const renderFooter = () => {
+  let domString = "";
+  domString += `
+  <ul class="nav justify-content-center">
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="https://docs.github.com/en/site-policy/github-terms/github-terms-of-service">Terms</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement">Privacy</a>
+  </li>
+  <i class="fa-brands fa-github" style="color: #E0218A;"></i>
+  <li class="nav-item">
+    <a class="nav-link" href="https://github.com/security">Security</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://github.com/about">About</a>
+  </li>
+</ul>
+  `
+  renderToDom("#footer", domString);
+};
+
+// ****** Projects Page Specfic Functions ******
 const tableRows = (array) => {
   let domString = "";  
   for (const key of array) {
@@ -259,27 +284,13 @@ const newProj = (e) => {
   }
 };
 
-const renderFooter = () => {
-  let domString = "";
-  domString += `
-  <ul class="nav justify-content-center">
-  <li class="nav-item">
-    <a class="nav-link active" aria-current="page" href="https://docs.github.com/en/site-policy/github-terms/github-terms-of-service">Terms</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement">Privacy</a>
-  </li>
-  <i class="fa-brands fa-github" style="color: #E0218A;"></i>
-  <li class="nav-item">
-    <a class="nav-link" href="https://github.com/security">Security</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="https://github.com/about">About</a>
-  </li>
-</ul>
-  `
-  renderToDom("#footer", domString);
+const projEventListeners = () => {
+  if (document.body.id === "projBody") {
+   const projectForm = document.querySelector("#form-container-proj")
+   projectForm.addEventListener("submit", newProj);
+  }
 };
+// ****** Overview Page Specific Functions ******
 
 //rendering main container/overview card
 const renderOverview = (array) => {
@@ -347,6 +358,8 @@ addRepo.addEventListener("submit", createRepo);
 }
 //end of overview js
 
+// ****** Package Page Specific Functions ******
+
 const renderPkgForm = () => {
   let pkgFormString = "";
 
@@ -412,6 +425,8 @@ const renderCardPkg = (array) => {
   renderToDom("#main-container-pkg", pkgString);
 };
 
+// ****** Repos Page Specific Functions ******
+
 const renderRepos = (array) => {
   let repoString = "";
   
@@ -425,15 +440,70 @@ const renderRepos = (array) => {
     </div>
   </div>`
   }
-  renderToDom("#main-container-repo", repoString)
+  renderToDom("#repo-card-container", repoString)
 };
-const projEventListeners = () => {
-    if (document.body.id === "projBody") {
-     const projectForm = document.querySelector("#form-container-proj")
-     projectForm.addEventListener("submit", newProj);
-    }
-};
+const renderRepoSearch = () => {
+  let repoSearchString = ""
+  repoSearchString += `
+    <nav id="repo-search-bar" class="navbar bg-body-tertiary">
+          <div class="container-fluid">
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Find a repository..." aria-label="Search">
+              <button class="btn btn-pink" type="submit">Search</button>
+            </form>
+          </div>
+        </nav>
+  `
+  renderToDom("#repo-search", repoSearchString)
+}
+const renderRepoForm = () => {
+  let repoFormString = ""
+  repoFormString += `
+  <form id="create-repo-form">
+          <h5>Create a New Repository</h5>
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Repository Name</label>
+            <textarea class="form-control" id="new-repo-name" rows="1" required></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Description (optional)</label>
+            <textarea class="form-control" id="new-repo-desc" rows="3"></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Tags (optional)</label>
+            <textarea class="form-control" id="new-repo-tags" rows="1"></textarea>
+          </div>
+          <button id="create-repo-btn" type="submit" class="btn btn-pink">Create Repository</button>
+        </form>
+  `
+  renderToDom("#form-container-repo", repoFormString)
+}
+
+const submitReposBtn = document.querySelector("#create-repo-btn")
+const submitRepo = document.querySelector("#form-container-repo")
+
+const reposEventListener = () => {
+  const addNewRepo = (e) => {
+    e.preventDefault();
   
+    const newRepo = {
+      repoId: profile.repos.length+1,
+      repoName: document.querySelector("#new-repo-name").value,
+      repoDesc: document.querySelector("#new-repo-desc").value,
+      repoTags: document.querySelector("#new-repo-tags").value,
+      repoStar: false
+    }
+    profile.repos.push(newRepo);
+    renderRepos(profile.repos);
+    form.reset();
+  };
+  
+  submitRepo.addEventListener("submit", addNewRepo)
+}
+
+
+// ****** Function to Render Content to Sepcific Pages ******
+
 const getData = () => {
   const page = document.body.id;
   switch (page) {
@@ -454,6 +524,9 @@ const getData = () => {
           break;
       case "repoBody":
           renderRepos(profile.repos);
+          renderRepoSearch();
+          renderRepoForm();
+          reposEventListener();
           break;
   }
 };
