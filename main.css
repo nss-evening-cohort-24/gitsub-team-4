@@ -114,7 +114,6 @@ h1 {
   border-width: thin;
   border-color: #E0218A;
 }
-<<<<<<< HEAD
 #form-container{
   width:100%;
   display: grid;
@@ -132,8 +131,7 @@ h1 {
 .form-control {
   background-color: black;
   color: pink;
-=======
-
+}
 .nav {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;
@@ -197,4 +195,3 @@ label {
 .form-check-input {
   background-color: #3B3535;
 }
->>>>>>> main

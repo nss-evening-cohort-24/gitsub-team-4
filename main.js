@@ -322,13 +322,13 @@ const renderForm = () => {
   <button type="submit" id="pinned-button" class="btn btn-pink">Create Project</button>
   </form>
 </div>`
-console.log("is this good or no")
   renderToDom("#form-container", domString);
 }
 
 const submitBtn = document.querySelector("#pinned-button");
 const addRepo = document.querySelector("#form-container");
 
+const mainEventListener = () => {
 const createRepo = (e) => {
   e.preventDefault(); 
 
@@ -344,6 +344,7 @@ const createRepo = (e) => {
   form.reset();
 }
 addRepo.addEventListener("submit", createRepo);
+}
 //end of overview js
 
 const renderPkgForm = () => {
@@ -437,6 +438,9 @@ const getData = () => {
   const page = document.body.id;
   switch (page) {
       case "main":
+        renderOverview(profile.repos);
+        renderForm();
+        mainEventListener();
           break;
       case "packBody":
           renderCardPkg(profile.packages);
@@ -449,6 +453,7 @@ const getData = () => {
           projEventListeners();
           break;
       case "repoBody":
+          renderRepos(profile.repos);
           break;
   }
 };
@@ -456,10 +461,7 @@ const getData = () => {
 const startApp = () => {
   renderHeader();
   renderProfile(profile);
-  renderOverview(profile.repos);
-  renderForm();
   getData();
   renderFooter();
-  
 }
 startApp();
