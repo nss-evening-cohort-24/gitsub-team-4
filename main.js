@@ -1,4 +1,3 @@
-//turned profile into an object.  
 
 const profile = {
   name: "Barbie Midge",

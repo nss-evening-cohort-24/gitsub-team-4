@@ -8,9 +8,6 @@ h1 {
 .card {
   background-color: black;
   color: white;
-  border-style: solid;
-  border-color: #E0218A;
-  border-width: 1px;
 }
 
 .nav-link {
@@ -44,4 +41,9 @@ h1 {
 }
 .btn-primary:hover{
   background-color: gray;
+}
+#main-container-pkg .card {
+  border-style: solid;
+  border-width: thin;
+  border-color: #E0218A;
 }
