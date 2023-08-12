@@ -29,3 +29,22 @@ h1 {
 .card-title {
   color:#E0218A;
 }
+
+.card-title {
+  color: #E0218A;
+}
+
+.form-label {
+  color: #E0218A;
+}
+.btn-primary {
+  background-color: #E0218A;
+}
+.btn-primary:hover{
+  background-color: gray;
+}
+#main-container-pkg .card {
+  border-style: solid;
+  border-width: thin;
+  border-color: #E0218A;
+}
