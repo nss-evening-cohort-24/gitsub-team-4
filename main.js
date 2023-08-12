@@ -192,6 +192,71 @@ const renderFooter = () => {
   renderToDom("#footer", domString);
 };
 
+//rendering main container/overview card
+const renderOverview = (array) => {
+  let domString = "";
+  for (const repo of array) {domString += `
+    <div class="card" style="width: 26rem;">
+            <div class="card-body">
+                <h5 class="card-title">${repo.repoName}</h5>
+                <p class="card-text">${repo.repoDesc}</p>
+                <div id="starsTags">
+                <i class="fa-solid fa-tag" style="color: #E0218A;"></i>
+                    <div class="card-link"> ${repo.repoTags}</div>
+                    <i class="fa-regular fa-star" style="color: #E0218A;"></i>
+                    <div class="card-link"> ${repo.repoStar}</div>
+                </div>
+            </div>
+        </div>`
+}
+  renderToDom("#main-container", domString)
+}
+//rendering form
+const renderForm = () => {
+  let domString = "";
+  domString += `
+  <div id="pinned-repo-form">
+  <h2>Create a new project</h2>
+  <p>Coordinate, track, and update your work in one place, so projects stay transparent and on schedule.</p>
+  <form>
+  <div class="mb-3">
+    <label for="pinned-name" class="form-label">Project board name</label>
+    <input type="text" 
+    class="form-control" 
+    id="pinned-name" 
+    placeholder="Example project name">
+  </div>
+  <div class="mb-3">
+    <label for="pinned-descript" class="form-label">Description</label>
+<textarea class="form-control" id="pinned-descript" rows="4"></textarea>
+  </div>
+  <button type="submit" id="pinned-button" class="btn btn-pink">Create Project</button>
+  </form>
+</div>`
+console.log("is this good or no")
+  renderToDom("#form-container", domString);
+}
+
+const submitBtn = document.querySelector("#pinned-button");
+const addRepo = document.querySelector("#form-container");
+
+const createRepo = (e) => {
+  e.preventDefault(); 
+
+    const newRepoObj = {
+      repoId: profile.repos.length + 1,
+      repoName: document.querySelector("#pinned-name").value,
+      repoDesc: document.querySelector("#pinned-descript").value,
+      repoTags: "",
+      RepoStar: "",
+    }
+  profile.repos.push(newRepoObj);
+  renderOverview(profile.repos);
+  form.reset();
+}
+addRepo.addEventListener("submit", createRepo);
+//end of overview js
+
 const renderPkgForm = () => {
   let pkgFormString = "";
 
@@ -276,6 +341,8 @@ const renderRepos = (array) => {
 const startApp = () => {
   renderHeader();
   renderProfile(profile);
+  renderOverview(profile.repos);
+  renderForm();
   renderCardPkg(profile.packages);
   renderPkgForm();
   renderFooter();
