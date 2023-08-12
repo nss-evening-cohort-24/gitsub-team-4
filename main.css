@@ -1,6 +1,7 @@
 body {
   background-color: black;
 }
+
 h1 {
   color: white;
 }
@@ -14,7 +15,6 @@ h1 {
 .card-body {
   font-family: Arial, Helvetica, sans-serif;
   align-items: baseline;
-  
 }
 
 .info {
@@ -116,8 +116,6 @@ li {
   margin-right: 50px;
 }
 
-
-
 #projSubmit {
   background-color: #E0218A;
 }
@@ -149,7 +147,6 @@ li {
   margin-bottom: 15px; 
   border: 1.5px solid #E0218A;
   padding: 20px;
-
 }
 
 label {
