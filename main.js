@@ -360,7 +360,7 @@ const renderRepos = (array) => {
     </div>
   </div>`
   }
-  renderToDom("#repo-card-container", repoString)
+  renderToDom("#main-container-repo", repoString)
 };
 const projEventListeners = () => {
     if (document.body.id === "projBody") {
@@ -385,11 +385,10 @@ const getData = () => {
           projEventListeners();
           break;
       case "repoBody":
+
           break;
   }
 };
-
-
 
 const startApp = () => {
   renderHeader();
