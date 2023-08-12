@@ -29,13 +29,17 @@
           <h5>Create a New Repository</h5>
           <div class="mb-3">
             <label for="exampleFormControlTextarea1" class="form-label">Repository Name</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="1" required></textarea>
+            <textarea class="form-control" id="new-repo-name" rows="1" required></textarea>
           </div>
           <div class="mb-3">
             <label for="exampleFormControlTextarea1" class="form-label">Description (optional)</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <textarea class="form-control" id="new-repo-desc" rows="3"></textarea>
           </div>
-          <button type="submit" class="btn btn-pink">Create Repository</button>
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Tags (optional)</label>
+            <textarea class="form-control" id="new-repo-tags" rows="1"></textarea>
+          </div>
+          <button id="create-repo-btn" type="submit" class="btn btn-pink">Create Repository</button>
         </form>
       </div>
     </div>

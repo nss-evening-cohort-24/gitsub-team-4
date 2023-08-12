@@ -194,6 +194,7 @@ const renderFooter = () => {
   renderToDom("#footer", domString);
 };
 
+// Repos Page Related Functions and Code
 
 const renderRepos = (array) => {
   let repoString = "";
@@ -211,6 +212,28 @@ const renderRepos = (array) => {
   renderToDom("#repo-card-container", repoString)
 }
 
+const submitReposBtn = document.querySelector("#create-repo-btn")
+const submitRepo = document.querySelector("#form-container-repo")
+
+const addNewRepo = (e) => {
+  console.log("click check")
+  e.preventDefault();
+
+  const newRepo = {
+    repoId: profile[0].repos.length+1,
+    repoName: document.querySelector("#new-repo-name").value,
+    repoDesc: document.querySelector("#new-repo-desc").value,
+    repoTags: document.querySelector("#new-repo-tags").value,
+    repoStar: false
+  }
+  profile[0].repos.push(newRepo);
+  renderRepos(profile[0].repos);
+};
+
+submitRepo.addEventListener("submit", addNewRepo)
+
+
+// end of Repos Specific Code
 const startApp = () => {
   renderHeader();
   renderProfile(profile);
