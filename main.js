@@ -499,7 +499,7 @@ const reposEventListener = () => {
 
     profile.repos.push(newRepo);
     renderRepos(profile.repos);
-    form.reset();
+    document.getElementById("create-repo-form").reset();
   };
   
   submitRepo.addEventListener("submit", addNewRepo)
