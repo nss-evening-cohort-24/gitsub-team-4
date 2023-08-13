@@ -164,9 +164,7 @@ li {
   overflow-y: scroll;
 }
 
-#containers {
-  flex-direction: column;
-}
+
 
 #main-container-proj {
   height: 295px;
@@ -195,22 +193,25 @@ label {
 .form-check-input {
   background-color: #3B3535;
 }
-#containers-pkg {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-#form-container-pkg{
-  width: 600px;
-  justify-content: center;
-}
-#main-container-pkg{
-  align-self: flex-end;
-  width: 300px;
-}
+
 #form-container-pkg {
-  align-self: flex-end;
   border: 1.5px solid #E0218A;
+  width: 600px;
   padding: 10px;
-  height: 295px;
+  margin-top: 200px;
+  margin-left: 450px;
+}
+#main-container-pkg {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  grid-template-rows: repeat(2, auto); 
+  gap: 20px; 
+  height: auto; 
+  width: 900px;
+  overflow-y: initial; 
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  margin-left: 450px;
+  border: 1.5px solid #E0218A;
+  padding: 20px;
 }

@@ -411,7 +411,7 @@ const renderCardPkg = (array) => {
 
   for (const pack of array) {
     pkgString += `
-      <div class="card">
+      <div id="pkg-card" class="card">
         <div class="card-body">
           <h5 class="card-title">${pack.packName}</h5>
           <p class="card-text">${pack.packDesc}</p>
