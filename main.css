@@ -103,7 +103,7 @@ h1 {
   background-color: #E0218A;
 }
 .btn-primary:hover{
-  background-color: gray;
+  background-color: #FDC5EE;
 }
 .nav-link:hover {
   color: #FDC5EE;
@@ -193,13 +193,25 @@ label {
 .form-check-input {
   background-color: #3B3535;
 }
-
+#containers-pkg{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.pkg-page-container {
+  display: flex;
+  margin-left: 200px;
+  padding-right: 20px;
+}
 #form-container-pkg {
   border: 1.5px solid #E0218A;
   width: 600px;
   padding: 10px;
-  margin-top: 200px;
-  margin-left: 450px;
+  margin-top: 20px;
+  margin-left: 100px;
+  margin-right: 900px;
+  max-width: 500px;
+  max-height: 100%;
 }
 #main-container-pkg {
   display: grid;
@@ -207,11 +219,13 @@ label {
   grid-template-rows: repeat(2, auto); 
   gap: 20px; 
   height: auto; 
-  width: 900px;
-  overflow-y: initial; 
   font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;
-  margin-left: 450px;
+  margin-top: 30px;
+  margin-left: 100px;
+  margin-right: 500px;
   border: 1.5px solid #E0218A;
   padding: 20px;
+  max-width: 900px;
+  max-height: 100%; 
 }
