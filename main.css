@@ -105,6 +105,17 @@ h1 {
 .btn-primary:hover{
   background-color: gray;
 }
+.nav-link:hover {
+  color: #FDC5EE;
+}
+.btn-pink{
+  background-color:#E0218A;
+  color: black;
+}
+.btn-pink:hover{
+  background-color:#FDC5EE;
+  color: black;
+}
 #main-container-pkg .card {
   border-style: solid;
   border-width: thin;
@@ -119,12 +130,18 @@ h1 {
   align-items: baseline;
 }
 
+.github {
+  display: block;
+  margin-right: 50px;
+  margin-left: 25px;
+}
+
 li {
   margin-right: 50px;
 }
 
-#projSubmit {
-  background-color: #E0218A;
+.form-check-label {
+  color: #E0218A;
 }
 
 #proj-page-containter {
