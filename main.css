@@ -76,7 +76,7 @@ h1 {
   flex-direction: row;
   margin: 50px;
   gap: 20px;
-  justify-content: space-around;
+  justify-content: space-evenly;
 }
 
 #containers-repos {
