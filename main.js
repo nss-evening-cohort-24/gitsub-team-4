@@ -91,7 +91,7 @@ const profile = {
       repoId: 1,
       repoName: "build-a-dreamhouse",
       repoDesc: "An interactive web game where the user is able to build their very own dream house or mojo dojo casa house.",
-      repoTags: ["netlify", "jamstack", "react"],
+      repoTags: ["netlify", " jamstack", " react"],
       repoStar: true
     },
     {
@@ -105,14 +105,14 @@ const profile = {
       repoId: 3,
       repoName: "which-barbie-are-you",
       repoDesc: "Ever wondered which barbie you are? Now's your chance! With this online quiz, learn which Barbie (or Ken) you are.",
-      repoTags: ["javascript", "html", "css"],
+      repoTags: ["javascript", " html", " css"],
       repoStar: true
     },
     {
       repoId: 4,
       repoName: "htthorsey",
       repoDesc: "HTTHORSEY - HTTP Status Codes as Portrayed by Horses",
-      repoTags: ["http status-codes", "gifs", "horses"],
+      repoTags: ["http status-codes", " gifs", " horses"],
       repoStar: true
     }]
 };
@@ -156,7 +156,7 @@ const renderProfile = (array) => {
   <img src="${profile.userImg}" class="card-img-top rounded-circle" alt="...">
   <div class="card-body">
     <h3>${profile.name}</h3>
-    <h5>${profile.userName}</h5>
+    <h4>${profile.userName}</h4>
     <p class="card-text">${profile.profBio}</p>
     <div class="info">
     <div class="location">
@@ -463,34 +463,38 @@ const renderRepos = (array) => {
   for (const card of array) {
     repoString += `<div class="card mb-3">
     <div class="card-body">
-      <h5 class="card-title">${card.repoName}</h5>
+      <div id="repo-card-title-info">      
+        <h5 id="repo-name" class="card-title">${card.repoName}</h5>
+        <button id="repo-star" type="button" class="btn btn-outline-light"> Star <i class="fa-regular fa-star" style="color: #E0218A;"></i></button>
+      </div>
       <p class="card-text">${card.repoDesc}</p>
-      <p class="card-text"><small class="text-body-secondary">${card.repoTags}</small></p>
-      <button type="button" class="btn btn-outline-light">Star</button>
+      <p id="repo-tags" class="card-text"><small>${card.repoTags}</small></p>
     </div>
   </div>`
   }
   renderToDom("#repo-card-container", repoString)
-};
+}; 
+
 const renderRepoSearch = () => {
   let repoSearchString = ""
   repoSearchString += `
-    <nav id="repo-search-bar" class="navbar bg-body-tertiary">
+    <nav id="repo-search-bar" class="navbar" data-bs-theme="dark">
           <div class="container-fluid">
             <form class="d-flex" role="search">
               <input class="form-control me-2" type="search" placeholder="Find a repository..." aria-label="Search">
-              <button class="btn btn-pink" type="submit">Search</button>
+              <button class="btn btn-pink btn-sm" type="submit">Search</button>
             </form>
           </div>
         </nav>
   `
   renderToDom("#repo-search", repoSearchString)
 }
+
 const renderRepoForm = () => {
   let repoFormString = ""
   repoFormString += `
   <form id="create-repo-form">
-          <h5>Create a New Repository</h5>
+          <h5 id="repo-form-title">Create a New Repository</h5>
           <div class="mb-3">
             <label for="exampleFormControlTextarea1" class="form-label">Repository Name</label>
             <textarea class="form-control" id="new-repo-name" rows="1" required></textarea>
@@ -526,7 +530,7 @@ const reposEventListener = () => {
 
     profile.repos.push(newRepo);
     renderRepos(profile.repos);
-    form.reset();
+    document.getElementById("create-repo-form").reset();
   };
   
   submitRepo.addEventListener("submit", addNewRepo)
