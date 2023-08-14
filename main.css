@@ -130,23 +130,78 @@ h5 {
 .form-label {
   color: #E0218A;
 }
+
 .btn-primary {
   background-color: #E0218A;
 }
+
 .btn-primary:hover{
   background-color: gray;
 }
+
 .nav-link:hover {
   color: #FDC5EE;
 }
+
 .btn-pink{
   background-color:#E0218A;
   color: black;
 }
+
 .btn-pink:hover{
   background-color:#FDC5EE;
   color: black;
 }
+
+#overview-container {
+  display: flex;
+}
+
+#ov-title {
+  margin-left: 10px;
+  padding-bottom: 0%;
+  color:#FDC5EE;
+}
+
+#ov-containers {
+  height: 100%;
+  width: 100%;
+  padding-left:70px;
+  display: grid;
+  grid: 1fr / auto 1fr;
+  grid-gap: 20px;
+}
+
+#main-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  width: 45em;
+  margin-left: 18px;
+  gap: 60px;
+  padding: 7px;
+  border: 1.5px solid #E0218A;
+}
+#form-container {
+  display: flex;
+  justify-content: flex-end;
+  align-self: flex-end;
+  flex-direction: column;
+  margin-left: 18px;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  padding-right: 1em;
+  padding-left: 1em;
+  border: 1.5px solid #E0218A;
+  width: 97%;
+  border-radius: 25px;
+}
+#footer {
+  display: flex;
+  flex-direction: column;
+}
+
 #main-container-pkg .card {
   border-style: solid;
   border-width: thin;
@@ -211,9 +266,9 @@ label {
 }
 
 .form-control {
-  height: 25px;
   background-color: #3B3535;
   color: white;
+  height: 25px;
 }
 
 .form-check-input {
