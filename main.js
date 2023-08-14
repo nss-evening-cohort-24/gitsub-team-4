@@ -91,7 +91,7 @@ const profile = {
       repoId: 1,
       repoName: "build-a-dreamhouse",
       repoDesc: "An interactive web game where the user is able to build their very own dream house or mojo dojo casa house.",
-      repoTags: ["netlify", "jamstack", "react"],
+      repoTags: ["netlify", " jamstack", " react"],
       repoStar: true
     },
     {
@@ -105,14 +105,14 @@ const profile = {
       repoId: 3,
       repoName: "which-barbie-are-you",
       repoDesc: "Ever wondered which barbie you are? Now's your chance! With this online quiz, learn which Barbie (or Ken) you are.",
-      repoTags: ["javascript", "html", "css"],
+      repoTags: ["javascript", " html", " css"],
       repoStar: true
     },
     {
       repoId: 4,
       repoName: "htthorsey",
       repoDesc: "HTTHORSEY - HTTP Status Codes as Portrayed by Horses",
-      repoTags: ["http status-codes", "gifs", "horses"],
+      repoTags: ["http status-codes", " gifs", " horses"],
       repoStar: true
     }]
 };
@@ -434,16 +434,16 @@ const renderRepos = (array) => {
     repoString += `<div class="card mb-3">
     <div class="card-body">
       <div id="repo-card-title-info">      
-        <h5 class="card-title">${card.repoName}</h5>
-        <button type="button" class="btn btn-outline-light"> Star <i class="fa-regular fa-star" style="color: #E0218A;"></i></button>
+        <h5 id="repo-name" class="card-title">${card.repoName}</h5>
+        <button id="repo-star" type="button" class="btn btn-outline-light"> Star <i class="fa-regular fa-star" style="color: #E0218A;"></i></button>
       </div>
       <p class="card-text">${card.repoDesc}</p>
-      <p class="card-text"><small>${card.repoTags}</small></p>
+      <p id="repo-tags" class="card-text"><small>${card.repoTags}</small></p>
     </div>
   </div>`
   }
   renderToDom("#repo-card-container", repoString)
-};
+}; 
 
 const renderRepoSearch = () => {
   let repoSearchString = ""
@@ -459,6 +459,7 @@ const renderRepoSearch = () => {
   `
   renderToDom("#repo-search", repoSearchString)
 }
+
 const renderRepoForm = () => {
   let repoFormString = ""
   repoFormString += `
@@ -504,7 +505,6 @@ const reposEventListener = () => {
   
   submitRepo.addEventListener("submit", addNewRepo)
 }
-
 
 // ****** Function to Render Content to Sepcific Pages ******
 
