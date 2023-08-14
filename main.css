@@ -15,7 +15,6 @@ h1 {
 .card-body {
   font-family: Arial, Helvetica, sans-serif;
   align-items: baseline;
-  
 }
 
 .info {
@@ -217,12 +216,18 @@ h5 {
   align-items: baseline;
 }
 
+.github {
+  display: block;
+  margin-right: 50px;
+  margin-left: 25px;
+}
+
 li {
   margin-right: 50px;
 }
 
-#projSubmit {
-  background-color: #E0218A;
+.form-check-label {
+  color: #E0218A;
 }
 
 #proj-page-containter {
@@ -252,7 +257,6 @@ li {
   margin-bottom: 15px; 
   border: 1.5px solid #E0218A;
   padding: 20px;
-
 }
 
 label {
