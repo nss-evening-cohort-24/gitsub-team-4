@@ -402,7 +402,7 @@ const renderPkgForm = () => {
       <div class="mb-3">
         <label for="Description" class="form-label">Description</label>
         <textarea class="form-control" id="desc" rows="4"></textarea>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-pink">Submit</button>
       </div>
     </form>
     `
@@ -445,7 +445,7 @@ const renderCardPkg = (array) => {
         <div class="card-body">
           <h5 class="card-title">${pack.packName}</h5>
           <p class="card-text">${pack.packDesc}</p>
-          <a href="#" class="btn btn-primary">Learn More</a>
+          <a href="#" class="btn btn-pink">Learn More</a>
         </div>
       </div>
         
