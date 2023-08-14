@@ -548,7 +548,6 @@ const getData = () => {
       case "packBody":
           renderCardPkg(profile.packages);
           renderPkgForm();
-          renderRepos(profile.repos);
           break;
       case "projBody":
           renderTable(profile.projects);
