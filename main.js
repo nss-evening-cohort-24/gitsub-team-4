@@ -92,33 +92,35 @@ const profile = {
       repoName: "build-a-dreamhouse",
       repoDesc: "An interactive web game where the user is able to build their very own dream house or mojo dojo casa house.",
       repoTags: ["netlify", "jamstack", "react"],
-      repoStar: true
+      repoStar: true,
     },
     {
       repoId: 2,
       repoName: "i-am-kenough",
       repoDesc: "A random quote generator meant to provide a moment of inspiration to get your day started off right.",
       repoTags: ["react"],
-      repoStar: false
+      repoStar: false,
     },
     {
       repoId: 3,
       repoName: "which-barbie-are-you",
       repoDesc: "Ever wondered which barbie you are? Now's your chance! With this online quiz, learn which Barbie (or Ken) you are.",
       repoTags: ["javascript", "html", "css"],
-      repoStar: true
+      repoStar: true,
     },
     {
       repoId: 4,
       repoName: "htthorsey",
       repoDesc: "HTTHORSEY - HTTP Status Codes as Portrayed by Horses",
       repoTags: ["http status-codes", "gifs", "horses"],
-      repoStar: true
+      repoStar: true,
     }]
 };
 
-// ****** Functions to Render Common Elements Between Pages ******
+const repoTags = ["netlify", "jamstack", "react", "javascript", "html", "css"];
 
+
+// ****** Functions to Render Common Elements Between Pages ****** 
 const renderToDom = (divId, htmlOnDom) => {
   const targetDiv = document.querySelector(divId);
   targetDiv.innerHTML = htmlOnDom;
@@ -292,11 +294,11 @@ const projEventListeners = () => {
 };
 // ****** Overview Page Specific Functions ******
 
-//rendering main container/overview card
+//rendering main container/pinned repos card
 const renderOverview = (array) => {
   let domString = "";
   for (const repo of array) {domString += `
-    <div class="card" style="width: 26rem;">
+    <div class="card" style="width: 20rem;">
             <div class="card-body">
                 <h5 class="card-title">${repo.repoName}</h5>
                 <p class="card-text">${repo.repoDesc}</p>
@@ -311,26 +313,27 @@ const renderOverview = (array) => {
 }
   renderToDom("#main-container", domString)
 }
+
 //rendering form
 const renderForm = () => {
   let domString = "";
   domString += `
   <div id="pinned-repo-form">
-  <h2>Create a new project</h2>
-  <p>Coordinate, track, and update your work in one place, so projects stay transparent and on schedule.</p>
+  <h2>Add a Pinned Repository</h2>
+  <p style="color: white">Add a repository to the pinned section.</p></p>
   <form>
   <div class="mb-3">
-    <label for="pinned-name" class="form-label">Project board name</label>
+    <label for="pinned-name" class="form-label">Pinned Repo Name:</label>
     <input type="text" 
     class="form-control" 
     id="pinned-name" 
-    placeholder="Example project name">
+    placeholder="Example repo name">
   </div>
   <div class="mb-3">
-    <label for="pinned-descript" class="form-label">Description</label>
+    <label for="pinned-descript" class="form-label">Description:</label>
 <textarea class="form-control" id="pinned-descript" rows="4"></textarea>
   </div>
-  <button type="submit" id="pinned-button" class="btn btn-pink">Create Project</button>
+  <button type="submit" id="pinned-button" class="btn btn-pink">Add Pinned Repository</button>
   </form>
 </div>`
   renderToDom("#form-container", domString);
@@ -339,6 +342,7 @@ const renderForm = () => {
 const submitBtn = document.querySelector("#pinned-button");
 const addRepo = document.querySelector("#form-container");
 
+//creating new pinned repo with event listeners
 const mainEventListener = () => {
 const createRepo = (e) => {
   e.preventDefault(); 
@@ -347,16 +351,15 @@ const createRepo = (e) => {
       repoId: profile.repos.length + 1,
       repoName: document.querySelector("#pinned-name").value,
       repoDesc: document.querySelector("#pinned-descript").value,
-      repoTags: "",
-      RepoStar: "",
+      repoTags: repoTags[Math.floor(Math.random()*repoTags.length)],
+      repoStar: true,
     }
   profile.repos.push(newRepoObj);
   renderOverview(profile.repos);
-  form.reset();
+  document.querySelector("form").reset();
 }
 addRepo.addEventListener("submit", createRepo);
 }
-//end of overview js
 
 // ****** Package Page Specific Functions ******
 
