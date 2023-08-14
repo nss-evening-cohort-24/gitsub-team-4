@@ -64,27 +64,27 @@ const profile = {
       projName: "Everything Pink Generator",
       projDesc: "Tutti Skipper Paris vis girl denique",
       projTags: "pink",
-      projStar: false 
+      projStar: true 
     },
     {
       projId: 4,
-      projName: "",
-      projDesc: "",
-      projTags: ["tag1", "tag2", "tag3"],
-      projStar: false 
+      projName: "Barbie World",
+      projDesc: "Give your world a Barbie make-over",
+      projTags: ["yolo", "barbie"],
+      projStar: true
     },
     {
       projId: 5,
-      projName: "",
-      projDesc: "",
-      projTags: ["tag1", "tag2", "tag3"],
+      projName: "Barbiepedia",
+      projDesc: "Source of all we know about Barbie",
+      projTags: ["knowledge", "info"],
       projStar: false 
     },
     {
       projId: 6,
-      projName: "",
-      projDesc: "",
-      projTags: ["tag1", "tag2", "tag3"],
+      projName: "WWBD",
+      projDesc: "What would Barbie do: Real Life Advice",
+      projTags: ["help", "a", "tag3"],
       projStar: false 
     }],
   repos: [{
@@ -188,7 +188,9 @@ const renderFooter = () => {
   <li class="nav-item">
     <a class="nav-link" href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement">Privacy</a>
   </li>
-  <i class="fa-brands fa-github" style="color: #E0218A;"></i>
+  <div class="github">
+    <i class="fa-brands fa-github" style="color: #E0218A;"></i>
+  </div>
   <li class="nav-item">
     <a class="nav-link" href="https://github.com/security">Security</a>
   </li>
@@ -203,13 +205,25 @@ const renderFooter = () => {
 // ****** Projects Page Specfic Functions ******
 const tableRows = (array) => {
   let domString = "";  
+  
+  const fav = (array) => {
+    if (array.projStar) {
+      return `#E0218A`
+    } else {
+      return `currentColor`
+    }
+  };
+
   for (const key of array) {
     domString += `
     <tr>
       <th scope="row">${key.projName}</th>
       <td>${key.projDesc}</td>
       <td>${key.projTags}</td>
-      <td>${key.projStar}</td>
+      <td id="fav"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="${fav(key)}" class="bi bi-star" viewBox="0 0 16 16">
+      <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/ id="star--${key.projId}">
+      </svg>
+    </td>
     </tr>`
     };
   return domString;
@@ -221,10 +235,10 @@ const renderTable = (array) => {
     <table class="table table-dark table-striped" id="tRow">
       <thead>
         <tr>
-          <th scope="col">Name</th>
-          <th scope="col">Description</th>
-          <th scope="col">Tag</th>
-          <th scope="col">Favorite</th>
+          <th style="color: #E0218A" scope="col">Name</th>
+          <th style="color: #E0218A" scope="col">Description</th>
+          <th style="color: #E0218A" scope="col">Tag</th>
+          <th style="color: #E0218A" scope="col">Favorite</th>
          </tr>
       </thead>
       <tbody>
@@ -241,6 +255,7 @@ const renderProjForm = () => {
   let domString = "";
   domString += `
       <form>
+      <h5 style="color: white">Create a New Project</h5>
       <div class="mb-3">
         <label for="name" class="form-label">Name</label>
         <input type="text" class="form-control" id="name" aria-describedby="emailHelp">
@@ -257,7 +272,7 @@ const renderProjForm = () => {
         <input type="checkbox" class="form-check-input" id="favorite">
         <label class="form-check-label" for="favorite">Favorite</label>
       </div>
-      <button type="submit" class="btn btn-primary" data-href="./projects.html" id="projSubmit">Submit</button>
+      <button type="submit" class="btn btn-pink" data-href="./projects.html" id="projSubmit">Submit</button>
       </form>
   `
  
@@ -276,7 +291,6 @@ const newProj = (e) => {
   }
 
   profile.projects.push(projObj);
-  console.log (profile.projects)
   
   if (document.body.id === "projBody") {
   renderTable(profile.projects);
@@ -289,6 +303,22 @@ const projEventListeners = () => {
    const projectForm = document.querySelector("#form-container-proj")
    projectForm.addEventListener("submit", newProj);
   }
+
+  const favStar = document.querySelector("#projBody");
+    favStar.addEventListener("click", (e) => {
+      if (e.target.id.includes("star--")) {
+        const [, int] = e.target.id.split("--");
+
+        for (const key of profile.projects) {
+          if (key.projId === Number(int) && key.projStar) {
+            key.projStar = false
+          } else if (key.projId === Number(int) && !key.projStar)
+            key.projStar = true
+        };
+
+        renderTable(profile.projects);
+      }
+    })
 };
 // ****** Overview Page Specific Functions ******
 
@@ -512,9 +542,9 @@ const getData = () => {
   const page = document.body.id;
   switch (page) {
       case "main":
-        renderOverview(profile.repos);
-        renderForm();
-        mainEventListener();
+          renderOverview(profile.repos);
+          renderForm();
+          mainEventListener();
           break;
       case "packBody":
           renderCardPkg(profile.packages);
