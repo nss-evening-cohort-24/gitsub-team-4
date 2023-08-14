@@ -399,7 +399,7 @@ const renderPkgForm = () => {
     pkgFormString += `
     <form id="barb-form">
       <div class="mb-3">
-        <label for="name" class="form-label">Project board name</label>
+        <label for="name" class="form-label">Package name</label>
         <input type="text" class="form-control" id="name" placeholder="Name">
       </div>
       <div class="mb-3">
