@@ -371,7 +371,7 @@ const renderPkgForm = () => {
       </div>
       <div class="mb-3">
         <label for="Description" class="form-label">Description</label>
-        <textarea class="form-control" id="desc" rows="3"></textarea>
+        <textarea class="form-control" id="desc" rows="4"></textarea>
         <button type="submit" class="btn btn-primary">Submit</button>
       </div>
     </form>
